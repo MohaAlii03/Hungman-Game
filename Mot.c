@@ -29,63 +29,33 @@ void Replay() {
 //Fonction d'affichage du pendu
 
 void afficherPendu(int tentatives) {
-	switch (tentatives) {
-	case 0:
-		printf("  +---+\n");
-		printf("  |   |\n");
-		printf("      |\n");
-		printf("      |\n");
-		printf("      |\n");
-		printf("      |\n");
-		break;
-	case 1:
-		printf("  +---+\n");
-		printf("  |   |\n");
-		printf("  O   |\n");
-		printf("      |\n");
-		printf("      |\n");
-		printf("      |\n");
-		break;
-	case 2:
-		printf("  +---+\n");
-		printf("  |   |\n");
-		printf("  O   |\n");
-		printf("  |   |\n");
-		printf("      |\n");
-		printf("      |\n");
-		break;
-	case 3:
-		printf("  +---+\n");
-		printf("  |   |\n");
-		printf("  O   |\n");
-		printf(" /|   |\n");
-		printf("      |\n");
-		printf("      |\n");
-		break;
-	case 4:
-		printf("  +---+\n");
-		printf("  |   |\n");
-		printf("  O   |\n");
-		printf(" /|\\  |\n");
-		printf("      |\n");
-		printf("      |\n");
-		break;
-	case 5:
-		printf("  +---+\n");
-		printf("  |   |\n");
-		printf("  O   |\n");
-		printf(" /|\\  |\n");
-		printf(" /    |\n");
-		printf("      |\n");
-		break;
-	case 6:
-		printf("  +---+\n");
-		printf("  |   |\n");
-		printf("  O   |\n");
-		printf(" /|\\  |\n");
-		printf(" / \\  |\n");
-		printf("      |\n");
-		break;
+	const char* pendu[] = {
+		"  +---+\n",
+		"  |   |\n",
+		"      |\n",
+		"      |\n",
+		"      |\n",
+		"      |\n"
+	};
+
+	if (tentatives >= 1) {
+		pendu[2] = "  O   |\n";
+	}
+	if (tentatives >= 2) {
+		pendu[3] = " /|   |\n";
+	}
+	if (tentatives >= 3) {
+		pendu[3] = " /|\\  |\n";
+	}
+	if (tentatives >= 4) {
+		pendu[4] = " /    |\n";
+	}
+	if (tentatives >= 5) {
+		pendu[4] = " / \\  |\n";
+	}
+
+	for (int i = 0; i < 6; i++) {
+		printf(pendu[i]);
 	}
 }
 
@@ -218,6 +188,7 @@ void ExitApp() {
 // Fonction qui sert � guider le joueur
 
 void MainMenu() {
+	system("color 3F");
 	printf("-----Main Menu----- \n \n");
 	printf("   [1] Start the game  \n");
 	printf("          or \n");
